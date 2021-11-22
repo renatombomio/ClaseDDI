@@ -9,7 +9,8 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.TextField?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectocalculadora.calculadoraController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutX="25.0" layoutY="21.0" prefHeight="61.0" prefWidth="235.0" style="-fx-background-color: black;" text="0" textFill="WHITE" AnchorPane.bottomAnchor="239.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>

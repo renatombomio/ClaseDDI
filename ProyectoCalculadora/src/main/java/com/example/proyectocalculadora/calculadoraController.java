@@ -2,10 +2,24 @@ package com.example.proyectocalculadora;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import java.lang.String;
 
-public class calculadoraController {
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class calculadoraController implements Initializable {
+
+    @FXML
+    private TextField textField;
+
+    @FXML
+    private Label label;
 
     @FXML
     private Button btn_borrar;
@@ -154,4 +168,27 @@ public class calculadoraController {
 
     }
 
+    private boolean Numero = false;
+    private boolean Punto= false;
+    private int numOperandos=0;
+    private double Operando1, Operando2;
+    private char Operador= 0;
+
+    private void numeroPantalla (String numero){
+        if (!Numero && numero.equals("0"))
+            return;
+        if (!Numero){
+            labelPantalla.setText("");
+            Punto = false;
+        }
+
+        String valorActual = labelPantalla.getText();
+        labelPantalla.getText(valorActual + numero);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
