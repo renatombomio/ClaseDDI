@@ -1,8 +1,8 @@
-module com.example.calculadora {
+module test{
+    requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
 
-
-    opens com.example.calculadora to javafx.fxml;
-    exports com.example.calculadora;
+    opens sample;
+}
 }
