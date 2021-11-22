@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="372.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.OperacionesController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <AnchorPane prefHeight="337.0" prefWidth="404.0">
+      <children>
+         <Label fx:id="Label1" layoutX="22.0" layoutY="36.0" text="Número 1" />
+         <TextField fx:id="txt1" layoutX="86.0" layoutY="32.0" />
+         <TextField fx:id="txt2" layoutX="86.0" layoutY="77.0" />
+         <Label fx:id="Label2" layoutX="22.0" layoutY="81.0" text="Número 2" />
+         <Label fx:id="Label21" layoutX="22.0" layoutY="122.0" text="Resultado" />
+         <TextField fx:id="txtResult" layoutX="86.0" layoutY="118.0" />
+          <Button fx:id="btSuma" layoutX="136.0" layoutY="259.0" onAction="#Sumar" text="Sumar" />
+      </children>
+   </AnchorPane>
+</VBox>
