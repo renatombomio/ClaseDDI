@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 import javafx.scene.control.TextField;
@@ -15,173 +16,188 @@ import java.util.ResourceBundle;
 
 public class calculadoraController implements Initializable {
 
-    @FXML
-    private TextField textField;
+
+    private boolean Numero = false;
+    private boolean Punto = false;
+    private int numOperandos = 0;
+    private double Operando1, Operando2;
+    private char Operador = ' ';
+
 
     @FXML
-    private Button btn_borrar;
+    private Label labPantalla;
+
 
     @FXML
-    private Button btn_cero;
+    void click_borrar(ActionEvent event){
+        Numero = false;
+        Punto = false;
+        numOperandos = 0;
+        Operando1= 0;
+        Operando2= 0;
+        Operador= ' ';
+        labPantalla.setText(" ");
+    }
 
     @FXML
-    private Button btn_cinco;
+    void click_Valor(ActionEvent event){
+        if (Numero)
+            labPantalla.setText("-" +labPantalla.getText());
+    }
 
     @FXML
-    private Button btn_cuatro;
+    void click_porciento(ActionEvent event){
+        if (numOperandos == 0){
+            labPantalla.setText("0");
+            return;
+        }
+        double valor= Double.parseDouble(labPantalla.getText());
+        double porcentaje = (Operando1 * valor) / 100;
+        labPantalla.setText(String.valueOf(porcentaje));
+        Numero = true;
+        Punto = true;
+    }
 
     @FXML
-    private Button btn_divi;
+    void click_division(ActionEvent event){
+        evalOperador("/");
+    }
 
     @FXML
-    private Button btn_dos;
+    void click_multiplicar(ActionEvent event){
+        evalOperador("*");
+    }
 
     @FXML
-    private Button btn_igual;
+    void click_resta(ActionEvent event){
+        evalOperador("-");
+    }
 
     @FXML
-    private Button btn_multi;
+    void click_suma(ActionEvent event){
+        evalOperador("+");
+    }
 
     @FXML
-    private Button btn_nueve;
+    void click_igual(ActionEvent event){
+        evalOperador("=");
+    }
 
-    @FXML
-    private Button btn_ocho;
+    private void evalOperador (String Operador){
+        if (Numero){
+            numOperandos ++;
 
-    @FXML
-    private Button btn_porcen;
+            if (numOperandos ==1)
+                Operando1= Double.parseDouble(labPantalla.getText());
 
-    @FXML
-    private Button btn_punto;
+            if (numOperandos ==2)
+                Operando2 = Double.parseDouble(labPantalla.getText());
 
-    @FXML
-    private Button btn_resta;
-
-    @FXML
-    private Button btn_seis;
-
-    @FXML
-    private Button btn_siete;
-
-    @FXML
-    private Button btn_suma;
-
-    @FXML
-    private Button btn_tres;
-
-    @FXML
-    private Button btn_uno;
-
-    @FXML
-    private GridPane gridPantalla;
-
-    @FXML
-    void click_borrar(ActionEvent event) {
-
+            switch (this.Operador){
+                case '+':
+                    Operando1 = Operando1 + Operando2;
+                    break;
+                case '-':
+                    Operando1 = Operando1 - Operando2;
+                    break;
+                case '/':
+                    Operando1 = Operando1 / Operando2;
+                    break;
+                case '*':
+                    Operando1 = Operando1 * Operando2;
+                    break;
+                case '=':
+                    Operando1 = Operando2;
+            }
+            labPantalla.setText(String.valueOf(Operando1));
+            numOperandos = 1;
+            Punto = false;
+        }
+        Numero = false;
+        this.Operador = Operador.charAt(0);
     }
 
     @FXML
     void click_cero(ActionEvent event) {
-
+        numeroPantalla("0");
     }
 
     @FXML
     void click_cinco(ActionEvent event) {
-
+        numeroPantalla("5");
     }
 
     @FXML
     void click_cuatro(ActionEvent event) {
-
+        numeroPantalla("4");
     }
 
-    @FXML
-    void click_divi(ActionEvent event) {
-
-    }
 
     @FXML
     void click_dos(ActionEvent event) {
-
+        numeroPantalla("2");
     }
 
-    @FXML
-    void click_igual(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_multi(ActionEvent event) {
-
-    }
 
     @FXML
     void click_nueve(ActionEvent event) {
-
+        numeroPantalla("9");
     }
 
     @FXML
     void click_ocho(ActionEvent event) {
-
+        numeroPantalla("8");
     }
 
-    @FXML
-    void click_porcen(ActionEvent event) {
-
-    }
 
     @FXML
     void click_punto(ActionEvent event) {
-
+       if (!Punto && !Numero) {
+           labPantalla.setText("0.");
+           Numero = true;
+       }else if (!Punto){
+           String valorActual= labPantalla.getText();
+           labPantalla.setText(valorActual + ".");
+       }
+       Punto = true;
     }
 
-    @FXML
-    void click_resta(ActionEvent event) {
-
-    }
 
     @FXML
     void click_seis(ActionEvent event) {
-
+        numeroPantalla("6");
     }
 
     @FXML
     void click_siete(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_suma(ActionEvent event) {
-
+        numeroPantalla("7");
     }
 
     @FXML
     void click_tres(ActionEvent event) {
-
+        numeroPantalla("3");
     }
 
     @FXML
     void click_uno(ActionEvent event) {
-
+        numeroPantalla("1");
     }
 
-    private boolean Numero = false;
-    private boolean Punto= false;
-    private int numOperandos=0;
-    private double Operando1, Operando2;
-    private char Operador= 0;
-
-    private void numeroPantalla (String numero){
+    private void numeroPantalla(String numero) {
         if (!Numero && numero.equals("0"))
             return;
-        if (!Numero){
-            gridPantalla.setText("");
+        if (!Numero) {
+
+            labPantalla.setText(" ");
             Punto = false;
         }
 
-        String valorActual = gridPantalla.getText();
-        gridPantalla.setText(valorActual + numero);
+        String valorActual = labPantalla.getText();
+        labPantalla.setText(valorActual + numero);
+        Numero = true;
     }
+
+
 
 
     @Override
@@ -189,27 +205,4 @@ public class calculadoraController implements Initializable {
 
     }
 
-    public calculadoraController() {
-        super();
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }
