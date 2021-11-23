@@ -6,10 +6,12 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -86,17 +88,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints />
               </rowConstraints>
               <children>
                 <Button fx:id="btnListas" mnemonicParsing="false" text="Comprobar" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                <ComboBox fx:id="comboC" prefWidth="150.0" />
+                <ComboBox fx:id="combo" prefWidth="150.0" />
                 <ChoiceBox fx:id="choice" prefWidth="150.0" GridPane.rowIndex="1" />
                 <Label fx:id="labelCombo" GridPane.columnIndex="1" />
                 <Label fx:id="labelChoice" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                <ProgressBar fx:id="barraProgreso" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                <ImageView fx:id="imagenPelicula" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button fx:id="btnDetalle" mnemonicParsing="false" text="Ver detalle" GridPane.rowIndex="3" />
               </children>
             </GridPane>
-          </content></Tab>
+          </content>
+        </Tab>
       </tabs>
     </TabPane>
   </center>

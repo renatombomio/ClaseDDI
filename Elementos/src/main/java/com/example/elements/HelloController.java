@@ -1,33 +1,41 @@
 package com.example.elements;
 
-
 import com.example.elements.utils.CuentaCorriente;
+import com.example.elements.utils.Pelicula;
 import com.example.elements.utils.Personaje;
+import com.example.elements.HelloApplication;
+import com.example.elements.utils.CuentaCorriente;
+import com.example.elements.utils.DetalleController;
+import com.example.elements.utils.Pelicula;
+import com.example.elements.utils.Personaje;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 import java.io.*;
-
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class HelloController implements Initializable {
 
@@ -38,7 +46,7 @@ public class HelloController implements Initializable {
     private RadioButton radioUno, radioDos, radioTres;
 
     @FXML
-    private Button btnComprobar, btnImagen, btnListas;
+    private Button btnComprobar, btnImagen, btnListas, btnDetalle;
 
     @FXML
     private BorderPane ventanaGeneral;
@@ -59,21 +67,29 @@ public class HelloController implements Initializable {
     private ChoiceBox<Personaje> choice;
 
     @FXML
-    private ListView listView;
+    private ListView<Pelicula> listView;
 
-    private ObservableList<Personaje> listaCombo, listaChoice, listaListView;
+    @FXML
+    private ProgressBar barraProgreso;
+
+    @FXML ImageView imagenPelicula;
+
+    private ObservableList<Personaje> listaCombo, listaChoice;
+
+    private ObservableList<Pelicula> listaListView;
 
     private ToggleGroup grupoRadios;
 
     private ObservableList<Personaje> listaPersonajes;
 
+    private Task tareaJson;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // System.out.println(Thread.currentThread().getName());
         instancias();
-        lecturaJSON();
+        //lecturaJSON();
         iniciarListas();
-
         asociarElementos();
         iniciarElementos();
         acciones();
@@ -101,8 +117,13 @@ public class HelloController implements Initializable {
 
     }
 
-    private void lecturaJSON(){
+    private void lecturaJSON() {
+
+
+
+
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=en-US&page=1";
+
         InputStream input;
         try {
             input = new URL(url).openStream();
@@ -110,16 +131,28 @@ public class HelloController implements Initializable {
             String respuesta = bis.readLine();
             JSONObject jsonGeneral = new JSONObject(respuesta);
             JSONArray arrayPeliculas = jsonGeneral.getJSONArray("results");
-            JSONObject pelicula = arrayPeliculas.getJSONObject(6);
-            String titulo = pelicula.getString("original_title");
 
-            System.out.println(titulo);
+            for (int i = 0; i < arrayPeliculas.length(); i++) {
+                //System.out.println(Thread.currentThread().getName());
+                JSONObject pelicula = arrayPeliculas.getJSONObject(i);
+                String titulo = pelicula.getString("original_title");
+                String imagen = pelicula.getString("poster_path");
+                int id = pelicula.getInt("id");
+                //Thread.sleep(100);
+                barraProgreso.setProgress((double) i/(double) arrayPeliculas.length());
+                //System.out.println(titulo);
 
 
+                listaListView.add(new Pelicula(titulo, imagen, id));
+            }
+            barraProgreso.setProgress(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
+
 
     private void asociarElementos() {
 
@@ -148,6 +181,7 @@ public class HelloController implements Initializable {
     }
 
     private void iniciarElementos() {
+
         btnToggle.setSelected(false);
         ventanaGeneral.getChildren().remove(gridAdicional);
         btnToggle.setBackground(null);
@@ -179,6 +213,16 @@ public class HelloController implements Initializable {
                 }
             }
         });*/
+
+
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
+            @Override
+            public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
+                System.out.println("https://image.tmdb.org/t/p/w500"+t1.getImagen());
+                imagenPelicula.setImage(new Image("https://image.tmdb.org/t/p/w500/"+t1.getImagen()));
+            }
+        });
+
         btnToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
@@ -202,8 +246,19 @@ public class HelloController implements Initializable {
         btnListas.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(combo.getSelectionModel().getSelectedItem().getNombre());
-                System.out.println(choice.getSelectionModel().getSelectedItem().getNombre());
+                System.out.println(Thread.currentThread());
+                //System.out.println(combo.getSelectionModel().getSelectedItem().getNombre());
+                //System.out.println(choice.getSelectionModel().getSelectedItem().getNombre());
+                //System.out.println(Thread.currentThread().getName());
+                //new Thread(tareaJson).start();
+                //barraProgreso.setProgress(0.6);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println(Thread.currentThread());
+                        lecturaJSON();
+                    }
+                });
             }
         });
         for (Node elemento : listaElementos) {
@@ -221,6 +276,7 @@ public class HelloController implements Initializable {
                 System.out.println(t1.getNombre());
             }
         });
+        btnDetalle.setOnAction(new ManejoPulsaciones());
     }
 
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
@@ -232,6 +288,29 @@ public class HelloController implements Initializable {
             if (bAux != btnImagen) {
                 // textfield.appedText(bAux.getText())
                 System.out.println(bAux.getText());
+            }
+
+            if (actionEvent.getSource() == btnDetalle){
+                // abrir una ventana nueva con el detalle de la pelicula
+                Stage ventanaDetalle = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("detalle-view.fxml"));
+                Scene scene = null;
+                Parent root = null;
+                try {
+                    root =  fxmlLoader.load();
+                    scene = new Scene(root,400,400);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (listView.getSelectionModel().getSelectedIndex()>-1){
+                    ventanaDetalle.setScene(scene);
+                    DetalleController detalleController = fxmlLoader.getController();
+                    detalleController.setearPelicula(listView.getSelectionModel().getSelectedItem());
+                    ventanaDetalle.setTitle("Detalle de la pelicula");
+                    ventanaDetalle.show();
+                }
+
             }
 
 

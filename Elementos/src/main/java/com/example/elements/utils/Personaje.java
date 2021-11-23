@@ -12,7 +12,6 @@ public class Personaje {
         this.defensa = defensa;
         this.concetracion = concetracion;
     }
-
     public String getNombre() {
         return nombre;
     }
@@ -58,4 +57,5 @@ public class Personaje {
         return getNombre() + " - "+getPoder();
     }
 }
+
 
