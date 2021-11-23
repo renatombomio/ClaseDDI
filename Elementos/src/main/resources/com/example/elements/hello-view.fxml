@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -9,7 +10,10 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -61,7 +65,7 @@
             </GridPane>
           </content>
         </Tab>
-        <Tab text="Untitled Tab">
+        <Tab text="Listas">
           <content>
             <GridPane>
               <columnConstraints>
@@ -97,6 +101,32 @@
               </children>
             </GridPane>
           </content></Tab>
+            <Tab text="Tabla">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane layoutY="-1.0" prefHeight="370.0" prefWidth="500.0">
+                           <top>
+                              <TextField id="textoFlitrat" BorderPane.alignment="CENTER" />
+                           </top>
+                           <center>
+                              <TableView prefHeight="193.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                  <TableColumn id="columnaId" prefWidth="116.0" text="id" />
+                                  <TableColumn id="columnaTitulo" prefWidth="112.0" text="titulo" />
+                                    <TableColumn id="columnaIdioma" prefWidth="131.0" text="idioma" />
+                                    <TableColumn id="columnaFecha" prefWidth="140.0" text="fecha" />
+                                </columns>
+                              </TableView>
+                           </center>
+                           <bottom>
+                              <Button mnemonicParsing="false" text="INFO" BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
       </tabs>
     </TabPane>
   </center>

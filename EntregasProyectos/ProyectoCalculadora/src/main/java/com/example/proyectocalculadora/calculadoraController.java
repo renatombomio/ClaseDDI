@@ -5,13 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.TextField;
 import java.lang.String;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
 
 
 import java.net.URL;
@@ -21,9 +17,6 @@ public class calculadoraController implements Initializable {
 
     @FXML
     private TextField textField;
-
-    @FXML
-    private Label label;
 
     @FXML
     private Button btn_borrar;
@@ -80,7 +73,7 @@ public class calculadoraController implements Initializable {
     private Button btn_uno;
 
     @FXML
-    private GridPane labelPantalla;
+    private GridPane gridPantalla;
 
     @FXML
     void click_borrar(ActionEvent event) {
@@ -182,12 +175,12 @@ public class calculadoraController implements Initializable {
         if (!Numero && numero.equals("0"))
             return;
         if (!Numero){
-            labelPantalla.setText("");
+            gridPantalla.setText("");
             Punto = false;
         }
 
-        String valorActual = labelPantalla.getText();
-        labelPantalla.getText(valorActual + numero);
+        String valorActual = gridPantalla.getText();
+        gridPantalla.setText(valorActual + numero);
     }
 
 
