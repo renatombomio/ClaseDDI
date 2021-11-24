@@ -17,8 +17,8 @@ import java.util.ResourceBundle;
 public class calculadoraController implements Initializable {
 
 
-    private boolean Numero = false;
-    private boolean Punto = false;
+    private boolean numero = false;
+    private boolean punto = false;
     private int numOperandos = 0;
     private double Operando1, Operando2;
     private char Operador = ' ';
@@ -30,8 +30,8 @@ public class calculadoraController implements Initializable {
 
     @FXML
     void click_borrar(ActionEvent event){
-        Numero = false;
-        Punto = false;
+        numero = false;
+        punto = false;
         numOperandos = 0;
         Operando1= 0;
         Operando2= 0;
@@ -41,7 +41,7 @@ public class calculadoraController implements Initializable {
 
     @FXML
     void click_Valor(ActionEvent event){
-        if (Numero)
+        if (numero)
             labPantalla.setText("-" +labPantalla.getText());
     }
 
@@ -54,8 +54,8 @@ public class calculadoraController implements Initializable {
         double valor= Double.parseDouble(labPantalla.getText());
         double porcentaje = (Operando1 * valor) / 100;
         labPantalla.setText(String.valueOf(porcentaje));
-        Numero = true;
-        Punto = true;
+        numero = true;
+        punto = true;
     }
 
     @FXML
@@ -84,7 +84,7 @@ public class calculadoraController implements Initializable {
     }
 
     private void evalOperador (String Operador){
-        if (Numero){
+        if (numero){
             numOperandos ++;
 
             if (numOperandos ==1)
@@ -111,9 +111,9 @@ public class calculadoraController implements Initializable {
             }
             labPantalla.setText(String.valueOf(Operando1));
             numOperandos = 1;
-            Punto = false;
+            punto = false;
         }
-        Numero = false;
+        numero = false;
         this.Operador = Operador.charAt(0);
     }
 
@@ -152,14 +152,14 @@ public class calculadoraController implements Initializable {
 
     @FXML
     void click_punto(ActionEvent event) {
-       if (!Punto && !Numero) {
+       if (!punto && !numero) {
            labPantalla.setText("0.");
-           Numero = true;
-       }else if (!Punto){
+           numero = true;
+       }else if (!punto){
            String valorActual= labPantalla.getText();
            labPantalla.setText(valorActual + ".");
        }
-       Punto = true;
+       punto = true;
     }
 
 
@@ -183,18 +183,18 @@ public class calculadoraController implements Initializable {
         numeroPantalla("1");
     }
 
-    private void numeroPantalla(String numero) {
-        if (!Numero && numero.equals("0"))
+    private void numeroPantalla(String numeros) {
+        if (!numero && numeros.equals("0"))
             return;
-        if (!Numero) {
+        if (!numero) {
 
             labPantalla.setText(" ");
-            Punto = false;
+            punto = false;
         }
 
         String valorActual = labPantalla.getText();
-        labPantalla.setText(valorActual + numero);
-        Numero = true;
+        labPantalla.setText(valorActual + numeros);
+        numero = true;
     }
 
 
