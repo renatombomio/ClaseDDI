@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>REPASOJson</artifactId>
+    <artifactId>Json</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>REPASOJson</name>
+    <name>Json</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -90,13 +90,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20210307</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -119,7 +112,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.repasojson/com.example.repasojson.HelloApplication</mainClass>
+                            <mainClass>com.example.json/com.example.json.HelloApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

@@ -1,4 +1,4 @@
-module com.example.repasojson {
+module com.example.json {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,8 +10,6 @@ module com.example.repasojson {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    requires org.json;
-
-    opens com.example.repasojson to javafx.fxml;
-    exports com.example.repasojson;
+    opens com.example.json to javafx.fxml;
+    exports com.example.json;
 }
