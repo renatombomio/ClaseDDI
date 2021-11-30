@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class calculadoraController implements Initializable {
 
+    //creo las variables de las operaciones, para después usarlas en la parte lógica
 
     private boolean numero = false;
     private boolean punto = false;
@@ -44,6 +45,8 @@ public class calculadoraController implements Initializable {
         if (numero)
             labPantalla.setText("-" +labPantalla.getText());
     }
+
+    //el porcentaje no me sale
 
     @FXML
     void click_porciento(ActionEvent event){
@@ -83,6 +86,8 @@ public class calculadoraController implements Initializable {
         evalOperador("=");
     }
 
+    //Aqui defino las operaciones para que la calculadora funcione
+
     private void evalOperador (String Operador){
         if (numero){
             numOperandos ++;
@@ -116,6 +121,8 @@ public class calculadoraController implements Initializable {
         numero = false;
         this.Operador = Operador.charAt(0);
     }
+
+    //Aquí le pongo a los botones el String que quiero que aparezca en pantalla
 
     @FXML
     void click_cero(ActionEvent event) {
