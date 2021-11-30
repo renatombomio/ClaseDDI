@@ -34,7 +34,7 @@ public class HelloController implements Initializable {
             for (int i = 0; i < arrayPeliculas.length(); i++) {
                 JSONObject pelicula = arrayPeliculas.getJSONObject(i);
                 String titulo = pelicula.getString("original_title");
-                String description = pelicula.getString("Overview");
+                String description = pelicula.getString("overview");
                 System.out.println(arrayPeliculas);
                 System.out.println(description);
             }

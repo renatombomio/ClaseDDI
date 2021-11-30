@@ -10,6 +10,8 @@ module com.example.json {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
+    requires org.json;
+
     opens com.example.json to javafx.fxml;
     exports com.example.json;
 }
