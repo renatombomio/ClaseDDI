@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chisteschuck.HelloController">
-   <children>
-      <ImageView fx:id="img_chuck" fitHeight="118.0" fitWidth="205.0" layoutX="207.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../chucknorris_logo_coloured_small@2x.png" />
-         </image>
-      </ImageView>
-      <ChoiceBox fx:id="choiceBox_lista" layoutX="18.0" layoutY="155.0" prefHeight="25.0" prefWidth="565.0">
-         <padding>
-            <Insets left="40.0" right="40.0" />
-         </padding>
-      </ChoiceBox>
-      <Button id="btn_aleatorio" fx:id="btn_chisteAleatorio" layoutX="66.0" layoutY="348.0" mnemonicParsing="false" text="Generar Chiste Aleatorio" />
-      <Button id="btn_categoria" fx:id="btn_chisteCategoria" layoutX="317.0" layoutY="348.0" mnemonicParsing="false" text="Generar chiste de categoria seleccionada" />
-      <ListView fx:id="listview_GenerarChiste" layoutX="19.0" layoutY="198.0" prefHeight="130.0" prefWidth="565.0" />
-   </children>
-</AnchorPane>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chisteschuck.HelloController">
+   <top>
+      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="chisteAleatorios" mnemonicParsing="false" text="Chiste aleatorio" />
+            <Button fx:id="chisteAleatorioCategoria" mnemonicParsing="false" text="Chiste categoria" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ComboBox fx:id="comboCategorias" maxWidth="1.7976931348623157E308" />
+            <ListView fx:id="listaChistes" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
