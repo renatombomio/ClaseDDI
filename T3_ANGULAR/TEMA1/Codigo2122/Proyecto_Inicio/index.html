@@ -22,13 +22,21 @@
         <H1 class="elemento_importante">IGOR KARABINOZSKYY</H1>
         <H1 class="elemento_importante">DENIEL DELGADOU</H1>
         <H1 class="elemento_importante">DANIEL CAMPOS</H1>
-        <button class="btn btn-success">Pulsar</button>
-        <ul class="list-group mt-4">
-            <li class="list-group-item">Elemento 1</li>
-            <li class="list-group-item">Elemento 2</li>
-            <li class="list-group-item">Elemento 3</li>
-            <li class="list-group-item">Elemento 4</li>
-        </ul>
+        <input id="input_nombre" type="text" placeholder="introduce nombre" class="form-control">
+        <input id="input_telefono" type="number" placeholder="introduce numero" class="form-control">
+        <select class= "form-control" id="select_tipo">
+          <option value="elemento_profesor">Profesor</option>
+          <option value="elemento_alumno">Alumno</option>
+        </select>
+        <button  id="boton_pulsar" class="btn btn-success mt-2">Pulsar</button>
+        
+        <ul class="list-group mt-4" id="lista_buscada">
+         <!-- <li class="list-group-item">Elemento 1</li>
+          <li class="list-group-item">Elemento 2</li>
+          <li class="list-group-item">Elemento 3</li>
+          <li class="list-group-item">Elemento 4</li>-->
+      </ul>
+      
     </div>
 
     <script src="./js/inicio.js"></script>

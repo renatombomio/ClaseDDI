@@ -10,3 +10,14 @@ h1{
 .letras_importantes{
     color: brown;
 }
+
+
+.elemento_alumno{
+background-color: cadetblue;
+font-family: sans-serif;
+}
+
+.elemento_profesor{
+background-color: dimgrey;
+font-family: sans-serif;
+}
