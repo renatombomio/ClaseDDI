@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PersonajesListRoutingModule } from './personajes-list-routing.module';
+import { CharacterListRoutingModule } from './character-list-routing.module';
 
 
 @NgModule({
@@ -10,7 +10,7 @@ import { PersonajesListRoutingModule } from './personajes-list-routing.module';
   ],
   imports: [
     CommonModule,
-    PersonajesListRoutingModule
+    CharacterListRoutingModule
   ]
 })
-export class PersonajesListModule { }
+export class CharacterListModule { }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { PersonajesModule } from '@personajes/personajes.module';
+import { CharactersModule } from '@app/components/pages/characters/character.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { PersonajesModule } from '@personajes/personajes.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    PersonajesModule
+    CharactersModule
   ]
 })
 export class HomeModule { }

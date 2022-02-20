@@ -7,7 +7,7 @@
       "@app/*":["src/app/*"],
       "@shared/*":["src/app/shared/*"],
       "@environments/*":["src/environments/*"],
-      "@personajes/*":["src/app/components/pages/personajes/*"],
+      "@personajes/*":["src/app/components/pages/characters/*"],
       "@pages/*":["src/app/components/pages/*"]
     },
     "outDir": "./dist/out-tsc",

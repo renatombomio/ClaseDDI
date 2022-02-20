@@ -9,7 +9,7 @@ const routes: Routes = [
   pathMatch: 'full'
   },
 
-  { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) }, { path: 'personajes-list', loadChildren: () => import('./components/pages/personajes/personajes-list/personajes-list.module').then(m => m.PersonajesListModule) }, { path: 'personajes-detail/:id', loadChildren: () => import('./components/pages/personajes/personajes-detail/personajes-detail.module').then(m => m.PersonajesDetailModule) }];
+  { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) }, { path: 'personajes-list', loadChildren: () => import('./components/pages/characters/character-list/character-list.module').then(m => m.PersonajesListModule) }, { path: 'personajes-detail/:id', loadChildren: () => import('./components/pages/characters/character-detail/character-detail.module').then(m => m.PersonajesDetailModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

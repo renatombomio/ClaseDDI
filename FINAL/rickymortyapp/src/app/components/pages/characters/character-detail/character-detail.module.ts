@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PersonajesDetailRoutingModule } from './personajes-detail-routing.module';
+import { CharacterDetailRoutingModule } from './character-detail-routing.module';
 
 
 
@@ -11,7 +11,7 @@ import { PersonajesDetailRoutingModule } from './personajes-detail-routing.modul
   ],
   imports: [
     CommonModule,
-    PersonajesDetailRoutingModule
+    CharacterDetailRoutingModule
   ]
 })
-export class PersonajesDetailModule { }
+export class CharacterDetailModule { }
