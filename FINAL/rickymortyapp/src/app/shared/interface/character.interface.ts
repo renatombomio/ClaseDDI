@@ -7,3 +7,10 @@ export interface Character{
     created: string;
     status:string;
 }
+
+export interface ParamMap {
+    keys: string[]
+    has(name: string): boolean
+    get(name: string): string | null
+    getAll(name: string): string[]
+  }
