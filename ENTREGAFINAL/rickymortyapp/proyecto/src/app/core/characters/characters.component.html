@@ -6,18 +6,29 @@
 <br>
 
 
+
 <div class="row">
-    <div *ngFor="let item of filtradas" class="col">
-    <div class="card" style="width: 18rem;">
-      <img src="{{item.imagen}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title" align="center">{{item.categoria}} </h5>
-        <p align="center"><b>{{item.nombre}}</b></p>
-        <p class="card-text">{{item.descripcion}}</p>
-      </div>
+    <div class="col" *ngFor="let item of characterList">
+        <div class="card" style="width: 18rem;">
+            <img [src]= item.image class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">{{item.id}}</p>
+              <p class="card-text">{{item.name}}</p>
+              <p class="card-text">{{item.status}}</p>
+              <p class="card-text">{{item.species}}</p>
+              <p class="card-text">{{item.type}}</p>
+              <p class="card-text">{{item.gender}}</p>
+              <p class="card-text">{{item.origin.name}}</p>     
+            </div>
+          </div>
+
     </div>
-    </div>
-    </div>
+</div>
+
+
+
+
+
 
 
 

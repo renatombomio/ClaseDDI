@@ -17,7 +17,8 @@ import { EpisodesComponent } from './core/episodes/episodes.component';
     HomeComponent,
     CharactersComponent,
     LocationsComponent,
-    EpisodesComponent
+    EpisodesComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,7 @@ import { EpisodesComponent } from './core/episodes/episodes.component';
   exports: [
     CharactersComponent,
     LocationsComponent,
-    EpisodesComponent
+    
   ],
 
   providers: [],
