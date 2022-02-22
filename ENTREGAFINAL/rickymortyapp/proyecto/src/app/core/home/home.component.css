@@ -1,0 +1,11 @@
+
+   .banner{margin: 30px 0; position: relative;}
+   .banner .bg{background-image: url(https://fondosmil.com/fondo/27334.jpg); background-repeat: no-repeat; background-position: center; background-size: fixed; width: 100%; height: 400px;}
+   .banner .bg img{display: block; margin: 20px auto; padding: 20px 0;}
+   .banner .titulo{color: white; text-align: center; padding-bottom: 20px; text-shadow: 2px 2px black;}
+   @media screen and (min-width:768px){
+      .banner .bg img{margin-right: 100px;}
+      .banner .titulo{position: absolute; top: 50%; left: 10%; transform: translate(-10%, -50%); width: 50%; text-align: left;}
+      .banner .titulo h1{font-size: calc(2*1.5vw);}
+      .banner .titulo p{font-size: calc(1.2*1.5vw);}
+   }

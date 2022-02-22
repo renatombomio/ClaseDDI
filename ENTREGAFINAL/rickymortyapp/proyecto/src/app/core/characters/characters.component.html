@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="row">
+    <div *ngFor="let item of filtradas" class="col">
+    <div class="card" style="width: 18rem;">
+      <img src="{{item.imagen}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" align="center">{{item.categoria}} </h5>
+        <p align="center"><b>{{item.nombre}}</b></p>
+        <p class="card-text">{{item.descripcion}}</p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+
+<button class="btn btn-primary" [routerLink]="['/home']" routerLinkActive="router-link-active"  style="margin-top: 100px;">Volver</button>
