@@ -5,13 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-
-export class CharacterService {
-  baseUrl = 'https://rickandmortyapi.com/api/character';
+export class EpisodesService {
+  baseUrlApi = 'https://rickandmortyapi.com/api/episode';
 
   constructor(private servicehttp: HttpClient) {}
 
-  getAllCharacters(): Observable<any> {
-    return this.servicehttp.get(this.baseUrl);
+  getAllEpisodes(): Observable<any> {
+    return this.servicehttp.get(this.baseUrlApi);
   }
 }

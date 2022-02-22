@@ -1,4 +1,25 @@
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+    <div class="col" *ngFor="let item of locationsList">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">{{item.id}}</p>
+              <p class="card-text">{{item.name}}</p>
+              <p class="card-text">{{item.type}}</p>
+              <p class="card-text">{{item.dimension}}</p>
+              <p class="card-text">{{item.created}}</p>     
+            </div>
+          </div>
+    </div>
+</div>
+
 
 <button class="btn btn-primary" [routerLink]="['/home']" routerLinkActive="router-link-active"  style="margin-top: 100px;">Volver</button>
